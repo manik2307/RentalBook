@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,18 +40,21 @@ public class BookContoller {
 
     // Posting a new book (admin only)
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<AuthResponse> addBook(@RequestBody Books book) {
         return ResponseEntity.ok(bookService.addBook(book));
     }
 
     // Updating a book (admin only)
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Books> updateBook(@PathVariable Long id, @RequestBody BookUpdate book) {
         return ResponseEntity.ok(bookService.updateBook(id, book));
     }
 
     // Deleting a book (admin only)
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
         return ResponseEntity.ok("Book deleted successfully");
