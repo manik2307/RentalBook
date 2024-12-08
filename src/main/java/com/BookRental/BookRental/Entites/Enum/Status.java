@@ -1,6 +1,6 @@
 package com.BookRental.BookRental.Entites.Enum;
 
-public enum Role {
-    USER,
-    ADMIN
+public enum Status {
+    Available,
+    Rented
 }

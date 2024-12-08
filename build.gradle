@@ -24,6 +24,8 @@ repositories {
 }
 
 dependencies {
+	 implementation 'org.springframework.security:spring-security-web:6.1.0' // Ensure this is >= 6.1
+    implementation 'org.springframework.security:spring-security-config:6.1.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
